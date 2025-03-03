@@ -211,6 +211,7 @@
             <v-card-title>ORDER SUMMARY</v-card-title>
             <v-divider length="100%" color="black"></v-divider>
             <v-divider length="100%" color="black"></v-divider>
+            <v-divider length="100%" color="black"></v-divider>
             <v-card-text
               class="item-footer d-flex justify-space-between align-center"
             >
