@@ -2,7 +2,7 @@
   <div class="producte-categories bg-grey-lighten-4">
     <h1 class="text-center pt-8 pb-4">{{ $route.params.title }}</h1>
     <v-container fluid v-if="categoryProductes.products">
-      <v-card elevation="0" :loading="loading" class="pt-8" min-width="700px">
+      <v-card elevation="0" class="pt-8" min-width="700px">
         <v-row v-if="loading">
           <v-col cols="3" v-for="num in 4" :key="num">
             <v-skeleton-loader

@@ -37,7 +37,14 @@
             class="icon-shipping-truck"
             viewBox="0 0 40.55 24"
             width="25"
-            fill="#f44336"
+            :fill="
+              parseInt((calcTotalPrice / 10000) * 100) < 50
+                ? '#f44336'
+                : parseInt((calcTotalPrice / 10000) * 100) > 50 &&
+                  parseInt((calcTotalPrice / 10000) * 100) < 100
+                ? '#ff9800'
+                : '#4caf50'
+            "
             :style="` position: absolute;
               bottom: 100%;
               left: calc(${
@@ -73,7 +80,14 @@
             </g>
           </svg>
           <v-progress-linear
-            color="red"
+            :color="
+              parseInt((calcTotalPrice / 10000) * 100) < 50
+                ? 'red'
+                : parseInt((calcTotalPrice / 10000) * 100) > 50 &&
+                  parseInt((calcTotalPrice / 10000) * 100) < 100
+                ? 'orange'
+                : 'green'
+            "
             height="8"
             :model-value="
               parseInt((calcTotalPrice / 10000) * 100) <= 100

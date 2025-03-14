@@ -12,7 +12,7 @@
         <v-col cols="12" class="pt-0">
           <v-card-title
             class="pl-0 pr-2 pb-0 d-flex justify-space-between align-center w-100"
-            style="font-weight: bold; font-size: 18px"
+            style="font-weight: bold; font-size: 35px"
             >Your Cart</v-card-title
           >
           <div
@@ -23,7 +23,14 @@
               class="icon-shipping-truck"
               viewBox="0 0 40.55 24"
               width="25"
-              fill="#f44336"
+              :fill="
+                parseInt((calcTotalPrice / 10000) * 100) < 50
+                  ? '#f44336'
+                  : parseInt((calcTotalPrice / 10000) * 100) > 50 &&
+                    parseInt((calcTotalPrice / 10000) * 100) < 100
+                  ? '#ff9800'
+                  : '#4caf50'
+              "
               :style="` position: absolute;
               bottom: 100%;
               left: calc(${
@@ -59,7 +66,14 @@
               </g>
             </svg>
             <v-progress-linear
-              color="red"
+              :color="
+                parseInt((calcTotalPrice / 10000) * 100) < 50
+                  ? 'red'
+                  : parseInt((calcTotalPrice / 10000) * 100) > 50 &&
+                    parseInt((calcTotalPrice / 10000) * 100) < 100
+                  ? 'orange'
+                  : 'green'
+              "
               height="8"
               :model-value="
                 parseInt((calcTotalPrice / 10000) * 100) <= 100
@@ -84,8 +98,41 @@
               Your Order Now Is included Free Shipping
             </v-card-text>
           </div>
+          <v-card-text
+            v-if="!CartItems.length"
+            class="px-0"
+            style="color: #6f6f6f"
+          >
+            Free shipping For all Order Over $10000.00!</v-card-text
+          >
+          <v-card-text
+            class="px-0 mt-5 pt-2 text-center"
+            style="color: #6f6f6f"
+            v-if="!CartItems.length"
+            >Your Cart Is Empty</v-card-text
+          >
+          <v-cart-actions
+            class="d-flex justify-center"
+            v-if="!CartItems.length"
+          >
+            <v-btn
+              variant="outlined"
+              class="mx-0"
+              height="40"
+              width="300px"
+              density="compact"
+              elevation="0"
+              style="
+                text-transform: none;
+                border-radius: 30px;
+                border-color: #6f6f6f;
+              "
+              @click="$router.push({ name: 'home' })"
+              >Continue Shopping</v-btn
+            >
+          </v-cart-actions>
         </v-col>
-        <v-col cols="8" class="pt-0">
+        <v-col cols="8" class="px-3" v-if="CartItems.length">
           <v-table class="w-100">
             <thead>
               <tr>
@@ -205,27 +252,12 @@
               </tr>
             </tbody>
           </v-table>
-        </v-col>
-        <v-col cols="4">
-          <v-card elevation="0">
-            <v-card-title>ORDER SUMMARY</v-card-title>
-            <v-divider length="100%" color="black"></v-divider>
-            <v-divider length="100%" color="black"></v-divider>
-            <v-divider length="100%" color="black"></v-divider>
-            <v-card-text
-              class="item-footer d-flex justify-space-between align-center"
-            >
-              <span>Subtotal</span>
-              <span style="font-size: 12px; font-weight: bold"
-                >${{ calcTotalPrice }}</span
-              >
-            </v-card-text>
-          </v-card>
-        </v-col>
-        <v-col cols="12" class="pt-0">
+          <v-divider length="100%" color="black"></v-divider>
+          <v-divider length="100%" color="black"></v-divider>
+          <v-divider length="100%" color="black"></v-divider>
           <v-card-text
             v-if="CartItems.length"
-            class="px-0 d-flex align-center"
+            class="px-0 mt-4 d-flex align-center"
             style="color: #6f6f6f; gap: 10px"
           >
             <span
@@ -250,6 +282,135 @@
           </v-card-text>
           <img src="@/assets/images/cart-page-cards.webp" width="250" />
         </v-col>
+        <v-col cols="4" class="px-3" v-if="CartItems.length">
+          <v-card elevation="0">
+            <v-card-title>ORDER SUMMARY</v-card-title>
+            <v-divider length="100%" color="black"></v-divider>
+            <v-divider length="100%" color="black"></v-divider>
+            <v-divider length="100%" color="black"></v-divider>
+            <v-divider length="100%" color="black"></v-divider>
+            <v-divider length="100%" color="black"></v-divider>
+            <v-card-text
+              class="item-footer d-flex justify-space-between align-center"
+            >
+              <span>Subtotal</span>
+              <span style="font-size: 12px; font-weight: bold"
+                >${{ calcTotalPrice }}</span
+              >
+            </v-card-text>
+            <v-divider length="100%" color="black"></v-divider>
+            <v-card-text> Get Shipping Estimate </v-card-text>
+            <select
+              name=""
+              id=""
+              class="pa-2 w-100"
+              style="
+                border: 1px solid black;
+                border-radius: 30px;
+                font-size: 14px;
+              "
+            >
+              <option
+                :value="country"
+                v-for="country in countries"
+                :key="country"
+              >
+                {{ country }}
+              </option>
+            </select>
+            <div class="states mb-5">
+              <select
+                name=""
+                id=""
+                class="pa-3 mt-4"
+                style="
+                  border: 1px solid black;
+                  border-radius: 30px;
+                  font-size: 14px;
+                  width: 55%;
+                  margin-right: 1px;
+                "
+              >
+                <option
+                  :value="country"
+                  v-for="country in countries"
+                  :key="country"
+                >
+                  {{ country }}
+                </option>
+              </select>
+              <input
+                type="text"
+                class="pa-3 mt-4"
+                style="
+                  border: 1px solid black;
+                  border-radius: 30px;
+                  font-size: 14px;
+                  width: 43%;
+                  margin-left: 1px;
+                "
+              />
+            </div>
+            <v-divider length="100%" color="black"></v-divider>
+            <v-card-actions class="px-0 mt-3 mb-3">
+              <v-btn
+                variant="elevated"
+                density="compact"
+                elevation="0"
+                class="w-100"
+                height="40"
+                color="blue"
+                style="
+                  text-transform: none;
+                  border-radius: 30px;
+                  border-color: #6f6f6f;
+                "
+                >Check Out</v-btn
+              >
+            </v-card-actions>
+            <v-divider length="100%" color="black"></v-divider>
+            <v-divider length="100%" color="black"></v-divider>
+            <v-card-text
+              class="item-footer d-flex justify-space-between align-center"
+            >
+              <span style="font-size: 14px; font-weight: bold">TOTAL:</span>
+              <span style="font-size: 14px; font-weight: bold"
+                >${{ calcTotalPrice }}</span
+              >
+            </v-card-text>
+            <v-divider length="100%" color="black"></v-divider>
+            <v-divider length="100%" color="black"></v-divider>
+            <v-card-actions class="px-0 mt-5 flex-column" style="gap: 10px">
+              <v-btn
+                variant="elevated"
+                density="compact"
+                elevation="0"
+                class="w-100"
+                height="40"
+                color="blue"
+                style="
+                  text-transform: none;
+                  border-radius: 30px;
+                  border-color: #6f6f6f;
+                "
+                >Proceed To Checkout</v-btn
+              >
+              <v-btn
+                variant="outlined"
+                density="compact"
+                class="w-100"
+                height="40"
+                style="
+                  text-transform: none;
+                  border-radius: 30px;
+                  border-color: #6f6f6f;
+                "
+                @click="$router.push({ name: 'home' })"
+                >Continue Shopping</v-btn
+              >
+            </v-card-actions>
+          </v-card>
+        </v-col>
       </v-row>
     </v-container>
   </div>
@@ -259,6 +420,11 @@
 import { cartStore } from "@/stores/Cart";
 import { mapActions, mapState } from "pinia";
 export default {
+  data() {
+    return {
+      countries: ["United States", "United Kingdom"],
+    };
+  },
   methods: {
     ...mapActions(cartStore, ["getCartItems", "deleteItem"]),
   },
