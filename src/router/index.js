@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import ProductesCategories from "../views/ProductesCategories.vue";
 import ProductDetails from "../views/ProductDetails.vue";
 import CartPage from "../views/CartPage.vue";
+import CheckOut from "@/views/CheckOut.vue";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: "/cart-page",
     name: "CartPage",
     component: CartPage,
+  },
+  {
+    path: "/check_out",
+    name: "CheckOut",
+    component: CheckOut,
   },
 ];
 const router = createRouter({

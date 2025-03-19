@@ -228,6 +228,7 @@
               border-radius: 30px;
               border-color: #6f6f6f;
             "
+            @click="toCheckOut"
             >Check Out</v-btn
           >
           <v-btn
@@ -255,7 +256,15 @@ import { mapActions, mapState } from "pinia";
 export default {
   inject: ["Emitter"],
   methods: {
-    ...mapActions(cartStore, ["getCartItems", "deleteItem"]),
+    ...mapActions(cartStore, [
+      "getCartItems",
+      "deleteItem",
+      "setToLocalStorage",
+    ]),
+    toCheckOut() {
+      this.setToLocalStorage();
+      this.$router.push({ name: "CheckOut" });
+    },
   },
   computed: {
     ...mapState(cartStore, ["CartItems"]),
