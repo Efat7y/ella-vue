@@ -27,7 +27,7 @@ const routes = [
     component: CartPage,
   },
   {
-    path: "/check_out",
+    path: "/checkout",
     name: "CheckOut",
     component: CheckOut,
   },
