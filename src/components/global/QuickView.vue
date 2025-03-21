@@ -1,5 +1,5 @@
 <template>
-  <div class="quick-view pt-14">
+  <div class="quick-view">
     <!-- <h1>Product Details</h1> -->
     <v-dialog v-model="dialog" class="" max-width="1000" max-height="550">
       <v-icon

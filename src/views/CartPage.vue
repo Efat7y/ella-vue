@@ -26,7 +26,7 @@
               :fill="
                 parseInt((calcTotalPrice / 10000) * 100) < 50
                   ? '#f44336'
-                  : parseInt((calcTotalPrice / 10000) * 100) > 50 &&
+                  : parseInt((calcTotalPrice / 10000) * 100) >= 50 &&
                     parseInt((calcTotalPrice / 10000) * 100) < 100
                   ? '#ff9800'
                   : '#4caf50'
@@ -69,7 +69,7 @@
               :color="
                 parseInt((calcTotalPrice / 10000) * 100) < 50
                   ? 'red'
-                  : parseInt((calcTotalPrice / 10000) * 100) > 50 &&
+                  : parseInt((calcTotalPrice / 10000) * 100) >= 50 &&
                     parseInt((calcTotalPrice / 10000) * 100) < 100
                   ? 'orange'
                   : 'green'
@@ -365,7 +365,7 @@
                   border-radius: 30px;
                   border-color: #6f6f6f;
                 "
-                >Check Out</v-btn
+                >Calculate Shipping</v-btn
               >
             </v-card-actions>
             <v-divider length="100%" color="black"></v-divider>

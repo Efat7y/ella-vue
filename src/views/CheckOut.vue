@@ -80,6 +80,133 @@
             "
             >Shipping Address</v-card-title
           >
+          <select
+            name=""
+            id=""
+            placeholder="Country/Region"
+            class="pa-2 w-100"
+            style="border: 1px solid #ccc; border-radius: 5px; font-size: 14px"
+          >
+            <option
+              :value="country"
+              v-for="country in countries"
+              :key="country"
+            >
+              {{ country }}
+            </option>
+          </select>
+          <div
+            class="user_name d-flex align-center justify-center"
+            style="gap: 15px"
+          >
+            <input
+              placeholder="First Name"
+              type="text"
+              class="pa-3 mt-4"
+              style="
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 14px;
+                width: 100%;
+              "
+            />
+            <input
+              placeholder="First Name(Optional)"
+              type="text"
+              class="pa-3 mt-4"
+              style="
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 14px;
+                width: 100%;
+              "
+            />
+          </div>
+          <input
+            placeholder="Address"
+            type="text"
+            class="pa-3 mt-4"
+            style="
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              font-size: 14px;
+              width: 100%;
+            "
+          />
+          <input
+            placeholder="Aprtment, suite, etc. (optional)"
+            type="text"
+            class="pa-3 mt-4"
+            style="
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              font-size: 14px;
+              width: 100%;
+            "
+          />
+          <div
+            class="city_parent d-flex align-center justify-center"
+            style="gap: 15px"
+          >
+            <input
+              placeholder="City"
+              type="text"
+              class="pa-3 mt-4"
+              style="
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 14px;
+                width: 100%;
+              "
+            />
+            <select
+              placeholder="Governorate"
+              name=""
+              id=""
+              class="pa-3 mt-4"
+              style="
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 14px;
+                width: 100%;
+              "
+            >
+              <option
+                :value="country"
+                v-for="country in countries"
+                :key="country"
+              >
+                {{ country }}
+              </option>
+            </select>
+            <input
+              placeholder="Postal Code"
+              type="text"
+              class="pa-3 mt-4"
+              style="
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 14px;
+                width: 100%;
+              "
+            />
+          </div>
+          <v-card-actions class="d-flex justify-end my-5">
+            <v-btn
+              class="text-white"
+              variant="elevated"
+              color="#1677b0"
+              height="45"
+              width="35%"
+              @click="dialog = true"
+              >Submet</v-btn
+            ></v-card-actions
+          >
+          <v-divider length="100%" color="black"></v-divider>
+          <v-divider length="100%" color="black"></v-divider>
+          <v-card-text style="font-size: 12px" color="#ddd"
+            >All Rights Reserved New-ella-demo</v-card-text
+          >
         </v-card>
       </v-col>
       <v-col cols="5">
@@ -88,6 +215,7 @@
           color="grey-lighten-3"
           width="100%"
           style="padding: 60px 70px 0 40px"
+          height="100%"
         >
           <v-card
             elevation="0"
@@ -153,11 +281,25 @@
       </v-col>
     </v-row>
   </v-container>
+  <OrderSuccess :popup="dialog" v-if="dialog" @close_popup="dialog = false" />
 </template>
 <script>
 import { mapState } from "pinia";
 import { cartStore } from "@/stores/Cart";
+import OrderSuccess from "@/components/OrderSuccess/OrderSuccess.vue";
 export default {
+  components: { OrderSuccess },
+  data: () => ({
+    dialog: false,
+    countries: [
+      "Egypt",
+      "Lebanon",
+      "Syria",
+      "Saudi Arabia",
+      "America",
+      "Jorden",
+    ],
+  }),
   computed: {
     ...mapState(cartStore, ["CartItems"]),
     calcTotalPrice() {

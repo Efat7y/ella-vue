@@ -182,8 +182,8 @@
               style="gap: 5px; cursor: pointer"
               id="language-btn"
             >
-              <span v-html="selectedLang[0].icon"></span>
-              <span
+              <span v-html="selectedLang[0].icon" v-if="selectedLang[0]"></span>
+              <span v-if="selectedLang[0]"
                 >{{ selectedLang[0].lang }} /
                 {{ selectedLang[0].currency }}</span
               >
