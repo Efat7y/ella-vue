@@ -11,40 +11,28 @@ export const ProductsModule = defineStore("productsModule", {
     SingleProduct: "",
     Categories: [
       {
+        title: "Fragrances",
+        route: "fragrances",
+      },
+      {
+        title: "Beauty",
+        route: "beauty",
+      },
+      {
+        title: "Furnitures",
+        route: "furnitures",
+      },
+      {
+        title: "Groceries",
+        route: "groceries",
+      },
+      {
         title: "Smart Phones",
         route: "smartphones",
       },
       {
         title: "Laptops",
         route: "laptops",
-      },
-      {
-        title: "Men's Watches",
-        route: "mens-watches",
-      },
-      {
-        title: "Women's Watches",
-        route: "womens-watches",
-      },
-      {
-        title: "Fragrances",
-        route: "fragrances",
-      },
-      {
-        title: "Men's Shoes",
-        route: "mens-shoes",
-      },
-      {
-        title: "Women's Shoes",
-        route: "womens-shoes",
-      },
-      {
-        title: "Women's Bags",
-        route: "womens-bags",
-      },
-      {
-        title: "Women's Dresses",
-        route: "womens-dresses",
       },
     ],
   }),

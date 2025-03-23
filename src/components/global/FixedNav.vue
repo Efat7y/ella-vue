@@ -20,7 +20,7 @@
                 <router-link
                   :to="{
                     name: 'ProductesCategories',
-                    params: {
+                    query: {
                       category: Category.route,
                       title: Category.title,
                     },

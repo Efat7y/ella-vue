@@ -23,7 +23,12 @@
             :modules="modules"
             :slides-per-view="3"
             :space-between="15"
-            :autoplay="{ delay: 3000 }"
+            :autoplay="{
+              delay: 3000,
+              pauseOnMouseEnter: true,
+              disableOnInteraction: false,
+            }"
+            :loop="true"
             class="pb-12"
           >
             <swiper-slide v-for="product in products" :key="product.id">
@@ -102,6 +107,7 @@
                 </v-card-text>
                 <v-btn-toggle
                   v-model="showenItem[product.title]"
+                  mandatory
                   class="d-flex justify-content align-center pt-0 pb-0"
                 >
                   <v-btn
@@ -176,6 +182,15 @@ export default {
     products: {
       type: Array,
       required: true,
+    },
+    routeTitle: {
+      type: String,
+    },
+    routeCategory: {
+      type: String,
+    },
+    index: {
+      type: Number,
     },
   },
   setup() {

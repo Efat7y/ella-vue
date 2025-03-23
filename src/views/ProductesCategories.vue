@@ -1,6 +1,6 @@
 <template>
   <div class="producte-categories bg-grey-lighten-4">
-    <h1 class="text-center pt-8 pb-4">{{ $route.params.title }}</h1>
+    <h1 class="text-center pt-8 pb-4">{{ $route.query.title }}</h1>
     <v-container fluid v-if="categoryProductes.products">
       <v-card elevation="0" class="pt-8" min-width="700px">
         <v-row v-if="loading">
@@ -172,15 +172,20 @@ export default {
   },
   watch: {
     async $route() {
-      // document.documentElement.scrollTop(0, 0);
-      this.loading = true;
-      await this.getProductCategories(this.$route.params.category);
-      this.loading = false;
+      if (this.$route.name == "ProductesCategories") {
+        document.documentElement.scrollTop(0, 0);
+        this.loading = true;
+        await this.getProductCategories(this.$route.query.category);
+        this.loading = false;
+      }
     },
   },
   async mounted() {
+    if (!this.$route.query.category) {
+      return this.$router.go(-1);
+    }
     this.loading = true;
-    await this.getProductCategories(this.$route.params.category);
+    await this.getProductCategories(this.$route.query.category);
     this.loading = false;
   },
 };

@@ -144,7 +144,7 @@
                 <router-link
                   :to="{
                     name: 'ProductesCategories',
-                    params: {
+                    query: {
                       category: Category.route,
                       title: Category.title,
                     },
@@ -182,14 +182,14 @@
               style="gap: 5px; cursor: pointer"
               id="language-btn"
             >
-              <span v-html="selectedLang[0].icon" v-if="selectedLang[0]"></span>
-              <span v-if="selectedLang[0]"
+              <span v-html="selectedLang[0].icon"></span>
+              <span
                 >{{ selectedLang[0].lang }} /
                 {{ selectedLang[0].currency }}</span
               >
               <v-icon>mdi-chevron-down</v-icon>
               <v-menu activator="#language-btn">
-                <v-list v-model:selected="selectedLang">
+                <v-list v-model:selected="selectedLang" mandatory>
                   <v-list-item
                     v-for="lang in langs"
                     :key="lang.lang"

@@ -10,7 +10,17 @@
       >
         {{ title }}
       </h2>
-      <a href="#" class="text-black" style="font-size: 16px">Shop All</a>
+      <!-- <router-link
+        :to="{
+          name: 'ProductesCategories',
+          query: {
+            title: categories[index].title,
+            category: categories[index].route,
+          },
+        }"
+        style="color: white; text-decoration: none"
+        >Shop All</router-link
+      > -->
     </div>
     <v-container fluid v-if="!products.length">
       <v-row>
@@ -31,7 +41,12 @@
       :slides-per-view="4"
       :space-between="20"
       :navigation="{ prevIcon: '.swiper-prev', nextIcon: '.swiper-next' }"
-      :autoplay="{ delay: 3000 }"
+      :autoplay="{
+        delay: 3000,
+        pauseOnMouseEnter: true,
+        disableOnInteraction: false,
+      }"
+      :loop="true"
       class="pb-12"
     >
       <swiper-slide v-for="product in products" :key="product.id">
@@ -107,6 +122,7 @@
           </v-card-text>
           <v-btn-toggle
             v-model="showenItem[product.title]"
+            mandatory
             class="d-flex justify-content align-center pt-0 pb-0"
           >
             <v-btn
@@ -137,7 +153,7 @@
                 left: 23%;
                 bottom: -55px;
               "
-              vairant="outlined"
+              variant="outlined"
               @click="
                 $router.push({
                   name: 'product-details',
@@ -160,6 +176,9 @@
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import { Pagination, Navigation, Autoplay } from "swiper";
 import { VSkeletonLoader } from "vuetify/lib/components/index.mjs";
+import { mapState } from "pinia";
+
+import { ProductsModule } from "@/stores/Products";
 export default {
   inject: ["Emitter"],
   methods: {
@@ -177,6 +196,18 @@ export default {
     titleColor: {
       type: String,
     },
+    routeTitle: {
+      type: String,
+    },
+    routeCategory: {
+      type: String,
+    },
+    index: {
+      type: Number,
+    },
+  },
+  computed: {
+    ...mapState(ProductsModule, ["categories"]),
   },
   setup() {
     return {

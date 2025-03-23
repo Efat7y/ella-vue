@@ -7,14 +7,16 @@
       :products="flashDeals"
       title="Flash Deals"
       titleColor="red"
+      :index="0"
     />
     <TopCategories />
-    <NewProductes :products="NewProductes" />
+    <NewProductes :products="NewProductes" :index="1" />
     <QualityFeatures />
     <ProductsComponents
       :products="FurnituresProductes"
       title="Top Furnitures"
       titleColor="#5b5b5b"
+      :index="2"
     />
     <v-container fluid>
       <v-row class="mt-5 mb-5">
@@ -33,12 +35,14 @@
       :products="FragrancesProductes"
       title="Top Fragrances"
       titleColor="#5b5b5b"
+      :index="0"
     />
     <img src="@/assets/images/tv-banner.webp" alt="" class="w-100" />
     <ProductsComponents
       :products="GroceriesProductes"
       title="Top Groceries"
       titleColor="#5b5b5b"
+      :index="3"
     />
     <WhyShopWithUs />
   </div>
