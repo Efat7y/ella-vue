@@ -38,7 +38,7 @@
             </svg>
             <svg
               viewBox="0 0 30 30"
-              class="icon icon-cart ml-7"
+              class="icon icon-cart ml-3 mr-4"
               enable-background="new 0 0 30 30"
               width="22"
               @click="openCart"
@@ -55,6 +55,7 @@
             <v-badge
               location="top right"
               :content="CartItems.length"
+              offset-x="17"
               color="black"
               v-if="CartItems.length"
             ></v-badge>

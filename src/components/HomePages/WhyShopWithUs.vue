@@ -5,14 +5,18 @@
     </div>
     <v-container fluid>
       <v-row>
-        <v-col cols="3">
+        <v-col cols="12" sm="6" md="6" lg="3" class="mb-5 mb-lg-0">
           <v-card
             elevation="0"
             class="text-center text-white"
             color="transparent"
           >
-            <div class="img-parent">
-              <img src="@/assets/images/free-shipping.png" alt="" />
+            <div class="img-parent-why">
+              <img
+                src="@/assets/images/free-shipping.png"
+                style="width: 50px; height: 50px"
+                alt=""
+              />
             </div>
             <v-card-title
               style="
@@ -34,14 +38,18 @@
             >
           </v-card>
         </v-col>
-        <v-col cols="3">
+        <v-col cols="12" sm="6" md="6" lg="3" class="mb-5 mb-lg-0">
           <v-card
             elevation="0"
             class="text-center text-white"
             color="transparent"
           >
-            <div class="img-parent">
-              <img src="@/assets/images/weekly-flash-sales.png" alt="" />
+            <div class="img-parent-why">
+              <img
+                src="@/assets/images/weekly-flash-sales.png"
+                style="width: 50px; height: 50px"
+                alt=""
+              />
             </div>
             <v-card-title
               style="
@@ -63,14 +71,18 @@
             >
           </v-card>
         </v-col>
-        <v-col cols="3">
+        <v-col cols="12" sm="6" md="6" lg="3" class="mb-5 mb-lg-0">
           <v-card
             elevation="0"
             class="text-center text-white"
             color="transparent"
           >
-            <div class="img-parent">
-              <img src="@/assets/images/discount.png" alt="" />
+            <div class="img-parent-why">
+              <img
+                src="@/assets/images/discount.png"
+                style="width: 50px; height: 50px"
+                alt=""
+              />
             </div>
             <v-card-title
               style="
@@ -92,14 +104,18 @@
             >
           </v-card>
         </v-col>
-        <v-col cols="3">
+        <v-col cols="12" sm="6" md="6" lg="3" class="mb-5 mb-lg-0">
           <v-card
             elevation="0"
             class="text-center text-white"
             color="transparent"
           >
-            <div class="img-parent">
-              <img src="@/assets/images/cash-back.png" alt="" />
+            <div class="img-parent-why">
+              <img
+                src="@/assets/images/cash-back.png"
+                style="width: 50px; height: 50px"
+                alt=""
+              />
             </div>
             <v-card-title
               style="
@@ -142,6 +158,13 @@ export default {};
     font-weight: 900;
     span {
       color: #0affd9;
+    }
+  }
+}
+@media (max-width: 580px) {
+  .why-shop-with-us {
+    .v-card {
+      height: auto !important;
     }
   }
 }

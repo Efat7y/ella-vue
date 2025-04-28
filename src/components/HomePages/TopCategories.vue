@@ -1,10 +1,10 @@
 <template>
   <div class="top-categoris">
     <div class="cyper-baneer">
-      <img src="../../assets/images/cyber-banner.webp" class="w-100" alt="" />
+      <img src="@/assets/images/cyber-banner.webp" class="w-100" alt="" />
     </div>
-    <div class="categories mt-10">
-      <div class="title d-flex justify-space-between align-center mb-3 px-5">
+    <div class="categories mt-6">
+      <div class="title d-flex justify-space-between align-center mb-0 px-5">
         <h2
           class="text-center flex-grow-1"
           style="font-size: 20px; font-weight: 900"
@@ -14,7 +14,14 @@
       </div>
       <v-container fluid>
         <v-row>
-          <v-col cols="2" v-for="cat in categories" :key="cat.title">
+          <v-col
+            cols="6"
+            sm="4"
+            md="3"
+            lg="2"
+            v-for="cat in categories"
+            :key="cat.title"
+          >
             <v-card class="text-center px-5 py-5" elevation="0" style="">
               <v-hover v-slot="{ isHovering, props }">
                 <div
@@ -25,7 +32,7 @@
                   <img
                     :src="cat.image"
                     class="w-100"
-                    :style="`width: 100%; height: 100%; cursor: pointer; transition: 0.5s all ease-in-out; transform: scale(${
+                    :style="`width: 100%;  height: 50%; cursor: pointer; transition: 0.5s all ease-in-out; transform: scale(${
                       isHovering ? 1.1 : 1
                     })`"
                     alt=""
@@ -111,4 +118,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.top-categoris {
+  .cyper-baneer {
+    .img-parent {
+      border-radius: 0 !important;
+    }
+  }
+}
+</style>

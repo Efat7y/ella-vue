@@ -3,7 +3,7 @@
     <v-footer :app="true" absolute pt-14>
       <v-container fluid class="px-0">
         <v-row>
-          <v-col cols="3">
+          <v-col cols="12" sm="6" md="4" lg="3">
             <v-card elevation="0">
               <v-card-title>Shop</v-card-title>
               <v-card-text v-for="Category in Categories" :key="Category.title"
@@ -21,7 +21,7 @@
               >
             </v-card>
           </v-col>
-          <v-col cols="3">
+          <v-col cols="12" sm="6" md="4" lg="3">
             <v-card elevation="0">
               <v-card-title>Further</v-card-title>
               <v-card-text>About</v-card-text>
@@ -33,7 +33,7 @@
               <v-card-text>Blog</v-card-text>
             </v-card>
           </v-col>
-          <v-col cols="3">
+          <v-col cols="12" sm="6" md="4" lg="3">
             <v-card elevation="0">
               <v-card-title>Cstomer Service</v-card-title>
               <v-card-text>Search Terms</v-card-text>
@@ -45,7 +45,7 @@
               <v-card-text>Store Location</v-card-text>
             </v-card>
           </v-col>
-          <v-col cols="3">
+          <v-col cols="12" sm="6" md="4" lg="3">
             <v-card elevation="0" class="pt-3">
               <img src="@/assets/images/footer-logo.webp" alt="" />
               <v-card-text class="d-flex justify-start" style="gap: 15px">
@@ -223,7 +223,7 @@
             <div class="img-parent text-center mt-11 mb-8">
               <img
                 src="@/assets/images/cart-page-cards.webp"
-                style="width: 40%; height: 60px"
+                style="width: 50%; height: 60px"
               />
               <!-- <img
                 src="https://new-ella-demo.myshopify.com/cdn/shop/files/trust_551fa8e0-5f24-4fbc-bf22-74c01b859a01.png?v=1639984732"
@@ -231,8 +231,8 @@
             </div>
           </v-col>
         </v-row>
-        <v-row class="mt-8">
-          <v-col cols="6"
+        <v-row class="">
+          <v-col cols="12" sm="6" md="6" lg="6" order="1" order-md="0"
             ><p class="pt-3" style="font-size: 14px; color: #858585">
               &copy; {{ new Date().getFullYear() }} Ella Demo. All rights
               Reserved. Powered By
@@ -241,7 +241,7 @@
               >
             </p></v-col
           >
-          <v-col cols="6">
+          <v-col cols="12" sm="6" md="6" lg="6">
             <div class="master-cardes d-flex justify-end" style="gap: 10px">
               <span v-for="(svg, i) in Svgs" :key="i" v-html="svg"></span>
             </div>
@@ -286,6 +286,24 @@ export default {
     padding-bottom: 7px;
     padding-left: 0;
     color: #858585;
+  }
+}
+@media (max-width: 580px) {
+  .footer {
+    .v-card {
+      height: auto !important;
+    }
+    .img-parent {
+      height: auto !important;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      img {
+        height: auto !important;
+      }
+    }
+    .master-cardes {
+      justify-content: center !important;
+    }
   }
 }
 </style>

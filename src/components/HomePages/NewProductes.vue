@@ -1,5 +1,9 @@
 <template>
   <div class="new-products">
+    <div class="titel mb-7 px-2 d-flex justify-space-between">
+      <h2 class="" style="font-weight: bold; font-size: 30px">New Products</h2>
+      <!-- <a href="#" class="text-black" style="font-size: 16px">Shop All</a> -->
+    </div>
     <v-container fluid>
       <v-row>
         <v-col cols="7" v-if="!products.length">
@@ -11,18 +15,13 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col cols="7" v-else>
-          <div class="titel mb-7 px-2 d-flex justify-space-between">
-            <h2 class="" style="font-weight: bold; font-size: 30px">
-              New Products
-            </h2>
-            <!-- <a href="#" class="text-black" style="font-size: 16px">Shop All</a> -->
-          </div>
+        <v-col cols="12" md="7" order="1" order-md="0" v-else>
           <Swiper
             :pagination="{ el: '.swiper-pagination', clickable: true }"
             :modules="modules"
-            :slides-per-view="3"
+            :slides-per-view="1"
             :space-between="15"
+            :breakpoints="breakpoints"
             :autoplay="{
               delay: 3000,
               pauseOnMouseEnter: true,
@@ -32,7 +31,7 @@
             class="pb-12"
           >
             <swiper-slide v-for="product in products" :key="product.id">
-              <v-card elevation="0" class="pb-6" style="height: 450px">
+              <v-card elevation="0" class="pb-6" style="height: 500px">
                 <v-hover v-slot="{ isHovering, props }">
                   <div
                     class="img-parent position-relative d-flex justify-content align-items-center"
@@ -152,7 +151,7 @@
             </swiper-slide>
           </Swiper>
         </v-col>
-        <v-col cols="5">
+        <v-col cols="12" md="5">
           <div class="cont pt-3">
             <img
               src="../../assets/images/vr-banner.webp"
@@ -205,6 +204,13 @@ export default {
   },
   data: () => ({
     showenItem: {},
+    breakpoints: {
+      0: { slidesPerView: 1 },
+      580: { slidesPerView: 2 },
+      767: { slidesPerView: 3 },
+      960: { slidesPerView: 2 },
+      1350: { slidesPerView: 3 },
+    },
   }),
 };
 </script>
@@ -216,6 +222,46 @@ export default {
 .img-parent:hover {
   .Quick-view {
     opacity: 1 !important;
+  }
+}
+// Media Queries (max-width: 767px)
+@media (max-width: 767px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    top: 55% !important;
+  }
+  .v-card {
+    height: 767px !important;
+    .choose {
+      width: 75% !important;
+      margin-left: 30px !important;
+    }
+  }
+  .img-parent {
+    height: 350px !important;
+    img {
+      height: 350px !important;
+    }
+  }
+}
+// Media Queries (max-width: 580px)
+@media (max-width: 580px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    top: 55% !important;
+  }
+  .v-card {
+    height: 580px !important;
+    .choose {
+      width: 75% !important;
+      margin-left: 30px !important;
+    }
+    .img-parent {
+      height: 350px !important;
+      img {
+        height: 350px !important;
+      }
+    }
   }
 }
 </style>

@@ -2,8 +2,8 @@
   <div class="features">
     <v-container>
       <v-row>
-        <v-col cols="4">
-          <div class="parent d-flex justify-center align-items-center">
+        <v-col cols="12" sm="12" md="4" lg="4">
+          <div class="parent d-flex justify-center align-center flex-column">
             <svg
               aria-hidden="true"
               focusable="false"
@@ -12,7 +12,7 @@
               role="img"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 640 512"
-              class="mr-5 svg-inline--fa fa-shipping-fast fa-w-20 fa-3x"
+              class="mr-5 mb-2 svg-inline--fa fa-shipping-fast fa-w-20 fa-3x"
               style="width: 28px"
             >
               <path
@@ -24,8 +24,10 @@
             <span> Free Shipping & Returns</span>
           </div>
         </v-col>
-        <v-col cols="4">
-          <div class="parent d-flex justify-center align-items-center second">
+        <v-col cols="12" sm="12" md="4" lg="4">
+          <div
+            class="parent d-flex justify-center align-center flex-column second"
+          >
             <svg
               aria-hidden="true"
               focusable="false"
@@ -34,7 +36,7 @@
               role="img"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 384 512"
-              class="mr-5 svg-inline--fa fa-award fa-w-12 fa-3x"
+              class="mr-5 mb-2 svg-inline--fa fa-award fa-w-12 fa-3x"
               style="width: 28px"
             >
               <path
@@ -46,8 +48,8 @@
             <span>Lowest Price Guarantee</span>
           </div>
         </v-col>
-        <v-col cols="4">
-          <div class="parent d-flex justify-center align-items-center">
+        <v-col cols="12" sm="12" md="4" lg="4">
+          <div class="parent d-flex justify-center align-center flex-column">
             <svg
               aria-hidden="true"
               focusable="false"
@@ -56,7 +58,7 @@
               role="img"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 576 512"
-              class="mr-5 svg-inline--fa fa-trophy-alt fa-w-18 fa-3x"
+              class="mr-5 mb-2 svg-inline--fa fa-trophy-alt fa-w-18 fa-3x"
               style="width: 28px"
             >
               <path
@@ -100,6 +102,16 @@ export default {};
       width: 2px;
       height: 70%;
       transform: translateY(-50%);
+    }
+  }
+}
+@media (max-width: 600px) {
+  .features {
+    .second {
+      &::before,
+      &::after {
+        display: none;
+      }
     }
   }
 }

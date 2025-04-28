@@ -41,6 +41,7 @@
       :slides-per-view="4"
       :space-between="20"
       :navigation="{ prevIcon: '.swiper-prev', nextIcon: '.swiper-next' }"
+      :breakpoints="breakpoints"
       :autoplay="{
         delay: 3000,
         pauseOnMouseEnter: true,
@@ -141,16 +142,16 @@
             /></v-btn>
           </v-btn-toggle>
           <div
-            class="d-flex justify-content align-center pb-0 position-relative"
+            class="d-flex justify-content text-center align-center pb-0 position-relative"
           >
             <v-btn
-              class="py-2 px-7"
+              class="py-2 ml-7 ml-sm-7 ml-md-9 ml-lg-7 px-7 choose"
               density="combact"
               style="
                 text-transform: none;
+                width: 70%;
                 border-radius: 30px;
                 position: absolute;
-                left: 23%;
                 bottom: -55px;
               "
               variant="outlined"
@@ -221,6 +222,13 @@ export default {
   },
   data: () => ({
     showenItem: {},
+    breakpoints: {
+      0: { slidesPerView: 1 },
+      580: { slidesPerView: 2 },
+      767: { slidesPerView: 2 },
+      990: { slidesPerView: 3 },
+      1200: { slidesPerView: 4 },
+    },
   }),
 };
 </script>
@@ -262,6 +270,40 @@ export default {
   .img-parent:hover {
     .Quick-view {
       opacity: 1 !important;
+    }
+  }
+}
+// Media Queries (max-width: 767px)
+@media (max-width: 767px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    top: 55% !important;
+  }
+  .v-card {
+    height: 580px !important;
+    .choose {
+      width: 75% !important;
+      margin-left: 30px !important;
+    }
+  }
+  .img-parent {
+    height: 350px !important;
+  }
+}
+// Media Queries (max-width: 580px)
+@media (max-width: 580px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    top: 55% !important;
+  }
+  .v-card {
+    height: 580px !important;
+    .choose {
+      width: 75% !important;
+      margin-left: 30px !important;
+    }
+    .img-parent {
+      height: 350px !important;
     }
   }
 }

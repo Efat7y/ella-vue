@@ -5,8 +5,11 @@
         <v-col
           v-for="(img, index) in images"
           :key="index"
-          cols="4"
-          class="py-0 pr-6"
+          cols="12"
+          sm="6"
+          md="4"
+          lg="4"
+          class="py-0 px-3 mt-5 mt-md-0 mt-lg-0 pr-lg-6"
           style="height: 250px"
         >
           <v-hover v-slot="{ isHovering, props }">
@@ -30,8 +33,11 @@
         <v-col
           v-for="(img, index) in images2"
           :key="index"
-          cols="6"
-          class="py-0 pr-6"
+          cols="12"
+          sm="12"
+          md="6"
+          lg="6"
+          class="py-0 px-3 mt-5 mt-lg-0 mt-lg-0 pr-lg-6"
           style="height: 400px"
         >
           <v-hover v-slot="{ isHovering, props }">

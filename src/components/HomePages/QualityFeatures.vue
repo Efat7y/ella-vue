@@ -2,7 +2,14 @@
   <div class="quality-features py-13 bg-grey-lighten-2">
     <v-container fluid>
       <v-row>
-        <v-col v-for="card in Cards" :key="card.title">
+        <v-col
+          cols="12"
+          sm="6"
+          md="3"
+          lg=""
+          v-for="card in Cards"
+          :key="card.title"
+        >
           <v-hover v-slot="{ isHovering, props }">
             <v-card
               :elevation="isHovering ? 2 : 0"
@@ -68,4 +75,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+@media (max-width: 580px) {
+  .quality-features {
+    .v-card {
+      height: auto !important;
+    }
+  }
+}
+</style>
